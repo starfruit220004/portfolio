@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-dark: #0B0E14;
+    --accent-blue: #7BA7D4;
+    --accent-pink: #E8A8C0;
+    --text-primary: #DDEEFF;
+  }
+
+  body {
+    @apply bg-[#0B0E14] text-[#DDEEFF] antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  /* Serif styling for headers */
+  .font-serif {
+    font-family: 'Playfair Display', 'Georgia', serif;
+  }
+
+  /* Custom selection color to match theme */
+  ::selection {
+    @apply bg-[#7BA7D4]/30 text-white;
+  }
+}
+
+@layer utilities {
+  /* Animation for the Typing Cursor */
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  .animate-blink {
+    animation: blink 1s infinite steps(1);
+  }
+
+  /* Fade in animation for the hero */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out forwards;
+  }
+
+  /* Hide grid backgrounds if they were globally applied */
+  .grid-background {
+    background-image: none !important;
+  }
+}
+
+/* Custom Scrollbar for the Blue Velvet theme */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0B0E14;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(123, 167, 212, 0.2);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(123, 167, 212, 0.5);
+}
+
