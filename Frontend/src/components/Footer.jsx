@@ -1,28 +1,64 @@
 const Footer = () => {
+  const SANS = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif";
+
   return (
     <footer style={{
-      padding: '2rem 2.5rem',
+      padding: '4rem 2.5rem',
       textAlign: 'center',
-      background: '#0C1220',
-      borderTop: '0.5px solid rgba(123, 167, 212, 0.12)',
+      background: '#020202', // Depth Black
+      position: 'relative',
+      overflow: 'hidden',
+      borderTop: '1px solid rgba(255, 255, 255, 0.05)',
     }}>
-      <p style={{
-        fontFamily: "Georgia, 'Times New Roman', serif",
-        fontSize: '1rem',
-        color: 'rgba(221, 238, 255, 0.4)',
-        margin: '0 0 0.4rem',
-      }}>
-        Star<span style={{ color: '#E8A8C0' }}>.</span> — Built with curiosity &amp; coffee ☕
-      </p>
-      <p style={{
-        fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif",
-        fontSize: '0.7rem',
-        color: 'rgba(123, 167, 212, 0.35)',
-        letterSpacing: '0.1em',
-        margin: 0,
-      }}>
-        Philippines · {new Date().getFullYear()}
-      </p>
+      
+      {/* Subtle bottom glow to match the Hero aesthetic */}
+      <div style={{
+        absolute: 'absolute',
+        bottom: '-50px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        width: '300px',
+        height: '100px',
+        background: 'linear-gradient(90deg, #00f2ff, #ff00c8)',
+        filter: 'blur(80px)',
+        opacity: 0.1,
+        pointerEvents: 'none'
+      }} />
+
+      <div style={{ position: 'relative', zIndex: 1 }}>
+        <p style={{
+          fontFamily: SANS,
+          fontSize: '0.85rem',
+          fontWeight: 900,
+          color: '#ffffff',
+          textTransform: 'uppercase',
+          letterSpacing: '0.4em',
+          margin: '0 0 1rem',
+          opacity: 0.9
+        }}>
+          Built with <span style={{ color: '#ff00c8' }}>Passion</span> & <span style={{ color: '#00f2ff' }}>Precision</span>
+        </p>
+
+        <div style={{
+          height: '1px',
+          width: '40px',
+          background: 'linear-gradient(90deg, #00f2ff, #ff00c8)',
+          margin: '1.5rem auto',
+          opacity: 0.5
+        }} />
+
+        <p style={{
+          fontFamily: SANS,
+          fontSize: '0.65rem',
+          fontWeight: 700,
+          color: 'rgba(255, 255, 255, 0.3)',
+          letterSpacing: '0.2em',
+          textTransform: 'uppercase',
+          margin: 0,
+        }}>
+           {new Date().getFullYear()} · At Your Service
+        </p>
+      </div>
     </footer>
   );
 };

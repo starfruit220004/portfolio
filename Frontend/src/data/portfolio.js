@@ -1,45 +1,59 @@
 export const WORKS = [
   {
-    category: 'Lead Generation Work',
-    emoji: '🎯',
-    title: 'Pipeline Accelerator',
-    desc: 'Full-stack developer & lead generation specialist based in Philippines — crafting digital digitalization.',
-    tags: ['Cold Outreach', 'CRM Management', 'A/B Testing'],
-    color: 'rgba(232,168,192,0.12)',
-    accent: 'rgba(232,168,192,0.2)',
+    category: 'Full-Stack Web',
+    emoji: '🍱',
+    title: 'VenDish Sales System',
+    desc: 'A high-performance sales optimization system for food businesses, featuring real-time serving tracking and inventory management.',
+    tags: ['React', 'Node.js', 'Supabase', 'Tailwind'],
+    color: '#00f2ff', // Electric Cyan
+    accent: 'rgba(0, 242, 255, 0.2)',
+    link: '#', // Add your actual link here
+    image: './vendish-preview.jpg'
   },
   {
-    category: 'Web Developer Skills in Action',
-    emoji: '🛒',
-    title: 'Next-Gen E-commerce',
-    desc: 'Host home or security systems store with freelance earnings about work.',
-    tags: ['Node.js', 'React', 'PostgreSQL', 'REST APIs'],
-    color: 'rgba(123,167,212,0.1)',
-    accent: 'rgba(123,167,212,0.2)',
+    category: 'Security Systems',
+    emoji: '🔒',
+    title: 'ALRT Monitoring',
+    desc: 'An intelligent door security system utilizing SMS notifications and real-time dashboard logs for enhanced premises safety.',
+    tags: ['Next.js', 'Express', 'SMS Gateway', 'PostgreSQL'],
+    color: '#bc13fe', // Neon Purple
+    accent: 'rgba(188, 19, 254, 0.2)',
+    link: '#', // Add your actual link here
+    image: './alrt-preview.jpg'
   },
+  {
+    category: 'System Design',
+    emoji: '🏫',
+    title: 'Smart Space WMSU',
+    desc: 'An AI-driven classroom and space utilization system designed to optimize academic facility allocation.',
+    tags: ['React', 'Django', 'Machine Learning', 'API'],
+    color: '#ff00c8', // Magenta
+    accent: 'rgba(255, 0, 200, 0.2)',
+    link: '#', // Add your actual link here
+    image: './wmsu-preview.jpg'
+  }
 ];
 
 export const SKILLS_LEADGEN = [
   { name: 'Cold Email Outreach',  level: 90 },
-  { name: 'LinkedIn Automation',  level: 85 },
-  { name: 'CRM Management',       level: 88 },
   { name: 'Funnel Optimization',  level: 82 },
   { name: 'A/B Testing',          level: 76 },
   { name: 'Data Scraping & Lists',level: 85 },
 ];
 
-export const SKILLS_IOT = [
-  { name: 'Firmware Design',    level: 102 },
-  { name: 'MQTT Messaging',     level: 86 },
-  { name: 'PCB Prototyping',    level: 83 },
-  { name: 'TDD Prototyping',    level: 90 },
-  { name: 'DevOps / Deployment',level: 73 },
+// Replaced SKILLS_IOT with SKILLS_BACKEND
+export const SKILLS_BACKEND = [
+  { name: 'Node.js / Express',   level: 88 },
+  { name: 'Django / Python',     level: 82 },
+  { name: 'PostgreSQL / Prisma', level: 84 },
+  { name: 'REST APIs & WebSockets', level: 90 },
+  { name: 'DevOps / Deployment', level: 75 },
 ];
 
 export const SKILLS_WEBDEV = [
   { name: 'React / Frontend',       level: 92 },
-  { name: 'Node.js / Express',      level: 85 },
-  { name: 'PostgreSQL / Prisma',    level: 84 },
-  { name: 'REST APIs & WebSockets', level: 86 },
-  { name: 'MQTT / IoT Systems',     level: 80 },
+  { name: 'Next.js Framework',      level: 88 },
+  { name: 'Tailwind / Modern CSS',  level: 95 },
+  { name: 'State Management',       level: 85 },
+  { name: 'UI/UX Prototyping',      level: 80 },
 ];

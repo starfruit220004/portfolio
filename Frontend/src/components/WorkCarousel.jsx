@@ -7,103 +7,138 @@ export default function WorkCarousel() {
   const total = WORKS.length;
   const w = WORKS[active];
 
+  // Helper to change colors based on project
+  const getThemeColor = () => w.color || '#00f2ff';
+
   const next = useCallback(() => setActive(a => (a + 1) % total), [total]);
   const prev = useCallback(() => setActive(a => (a - 1 + total) % total), [total]);
 
   return (
-    <section id="work" className="py-24 px-6 md:px-20 bg-[#0B0E14] relative overflow-hidden">
-      {/* Background soft glow to fill space */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#7BA7D4] opacity-[0.02] blur-[120px] pointer-events-none" />
+    <section id="work" className="py-32 px-6 md:px-20 bg-[#050505] relative overflow-hidden transition-colors duration-1000">
+      
+      {/* --- VIBRANT DYNAMIC BACKGROUND GLOWS --- */}
+      <div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-[0.1] blur-[150px] pointer-events-none transition-all duration-1000"
+        style={{ background: `radial-gradient(circle, ${getThemeColor()} 0%, transparent 70%)` }}
+      />
 
       <div className="max-w-7xl mx-auto relative">
-        <SectionHeader label="Expertise & Portfolio" title="What I Do" />
+        <SectionHeader label="Portfolio" title="Featured Projects" />
 
-        {/* MAIN DUAL-CARD CONTAINER */}
-        <div className="mt-16 grid lg:grid-cols-12 gap-8 items-stretch">
+        <div className="mt-20 grid lg:grid-cols-12 gap-10 items-stretch">
           
-          {/* LEFT COLUMN: The "Business/Lead Gen" Side (40%) */}
-          <div className="lg:col-span-5 flex flex-col gap-6">
-            <div className="flex-1 bg-[#0C1220] border border-[rgba(123,167,212,0.1)] p-8 rounded-3xl backdrop-blur-md relative overflow-hidden group">
+          {/* LEFT COLUMN: Business/Lead Gen (Static Vibrant) */}
+          <div className="lg:col-span-4 flex flex-col gap-6">
+            <div className="flex-1 bg-[#101015] border border-[#ff00c8]/20 p-10 rounded-[2.5rem] backdrop-blur-xl relative overflow-hidden group shadow-[0_0_40px_rgba(255,0,200,0.1)]">
+              {/* Corner Glow */}
+              <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#ff00c8] opacity-20 blur-3xl" />
+              
               <div className="relative z-10">
-                <span className="text-[#E8A8C0] text-[0.65rem] uppercase tracking-[0.3em] font-bold">Conversion Focus</span>
-                <h3 className="text-3xl font-serif text-white mt-4 mb-4">Lead Generation</h3>
-                <p className="text-[#DDEEFF]/50 text-sm leading-relaxed mb-6">
-                  I don't just build sites; I build funnels. I focus on high-conversion landing pages, automated lead capture, and SEO strategies that turn visitors into clients.
+                <span className="text-[#ff00c8] text-[0.75rem] uppercase tracking-[0.4em] font-black">Growth Strategy</span>
+                <h3 className="text-4xl font-bold text-white mt-4 mb-6">Lead Generation</h3>
+                <p className="text-gray-400 text-base leading-relaxed mb-8">
+                  Engineered to convert. I build automated funnels that bridge the gap between complex software and high-intent clients.
                 </p>
-                <ul className="space-y-3">
-                  {['Automated Email Funnels', 'High-ROAS Landing Pages', 'Lead Scrapers & CRM Integration'].map(item => (
-                    <li key={item} className="flex items-center gap-3 text-[#7BA7D4] text-xs font-medium">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#E8A8C0]" /> {item}
+                <ul className="space-y-4">
+                  {['Automated CRM Sync', 'High-ROAS Landing Pages', 'Data-Driven Funnels'].map(item => (
+                    <li key={item} className="flex items-center gap-3 text-white text-sm font-bold">
+                      <span className="w-2 h-2 rounded-full bg-[#ff00c8] shadow-[0_0_10px_#ff00c8]" /> {item}
                     </li>
                   ))}
                 </ul>
               </div>
             </div>
 
-            {/* Quick Stats Grid to fill space */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-[#0C1220]/50 border border-[rgba(123,167,212,0.05)] p-6 rounded-2xl text-center">
-                <div className="text-[#7BA7D4] text-2xl font-serif">15%</div>
-                <div className="text-[rgba(221,238,255,0.3)] text-[0.6rem] uppercase tracking-widest mt-1">Avg. Conversion</div>
+            {/* Neon Stats */}
+            <div className="grid grid-cols-2 gap-6">
+              <div className="bg-[#101015] border border-[#00f2ff]/30 p-8 rounded-3xl text-center shadow-[0_0_20px_rgba(0,242,255,0.05)]">
+                <div className="text-[#00f2ff] text-3xl font-black drop-shadow-[0_0_10px_#00f2ff]">15%</div>
+                <div className="text-gray-500 text-[0.6rem] uppercase tracking-[0.2em] mt-2 font-bold">Conversion</div>
               </div>
-              <div className="bg-[#0C1220]/50 border border-[rgba(123,167,212,0.05)] p-6 rounded-2xl text-center">
-                <div className="text-[#E8A8C0] text-2xl font-serif">10k+</div>
-                <div className="text-[rgba(221,238,255,0.3)] text-[0.6rem] uppercase tracking-widest mt-1">Leads Managed</div>
+              <div className="bg-[#101015] border border-[#bc13fe]/30 p-8 rounded-3xl text-center shadow-[0_0_20px_rgba(188,19,254,0.05)]">
+                <div className="text-[#bc13fe] text-3xl font-black drop-shadow-[0_0_10px_#bc13fe]">10k+</div>
+                <div className="text-gray-500 text-[0.6rem] uppercase tracking-[0.2em] mt-2 font-bold">Leads</div>
               </div>
             </div>
           </div>
 
-          {/* RIGHT COLUMN: The "Web Dev" Carousel (70%) */}
-          <div className="lg:col-span-7 relative">
-            <div className="h-full bg-gradient-to-br from-[#192038] to-[#0C1220] border border-[rgba(123,167,212,0.2)] rounded-[2.5rem] overflow-hidden flex flex-col shadow-2xl">
+          {/* RIGHT COLUMN: Interactive Project Carousel */}
+          <div className="lg:col-span-8 relative">
+            <div 
+              className="h-full bg-[#101015] rounded-[3rem] overflow-hidden flex flex-col transition-all duration-500 shadow-2xl"
+              style={{ border: `2px solid ${getThemeColor()}44` }}
+            >
               
-              {/* Interactive Header */}
-              <div className="px-10 pt-10 flex justify-between items-center">
+              {/* Browser-style Header */}
+              <div className="px-10 pt-8 flex justify-between items-center border-b border-white/5 pb-6">
                 <div className="flex gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#E8A8C0]/30" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#7BA7D4]/30" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#DDEEFF]/30" />
+                  <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
+                  <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
+                  <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
                 </div>
-                <span className="text-[rgba(123,167,212,0.6)] font-mono text-[0.6rem] tracking-[0.2em]">CASE_STUDY_0{active + 1}</span>
+                <div className="px-6 py-1 bg-black/40 rounded-full border border-white/10">
+                   <span className="text-gray-500 font-mono text-[0.65rem] tracking-[0.3em] uppercase">Project_Module: {active + 1}</span>
+                </div>
               </div>
 
-              {/* Dynamic Project Content */}
-              <div className="p-10 md:p-16 flex-1 flex flex-col">
-                <div className="flex items-center gap-6 mb-8">
-                  <span className="text-5xl">{w.emoji}</span>
-                  <div>
-                    <h4 className="text-3xl font-serif text-white leading-tight">{w.title}</h4>
-                    <span className="text-[#7BA7D4] text-[0.7rem] uppercase tracking-widest font-semibold">{w.category}</span>
-                  </div>
+              {/* Project Content */}
+              <div className="p-10 md:p-20 flex-1 flex flex-col relative">
+                {/* Floating Emoji with Glow */}
+                <div 
+                   className="w-24 h-24 mb-10 flex items-center justify-center text-6xl rounded-3xl bg-black/40 border transition-all duration-700"
+                   style={{ borderColor: `${getThemeColor()}88`, boxShadow: `0 0 30px ${getThemeColor()}33` }}
+                >
+                  {w.emoji}
                 </div>
 
-                <p className="text-[#DDEEFF]/60 text-lg leading-relaxed mb-10 max-w-xl">
-                  {w.desc}
-                </p>
+                <div>
+                  <span className="inline-block px-4 py-1 rounded-full text-[0.7rem] font-black uppercase tracking-widest mb-4 transition-all duration-700"
+                    style={{ backgroundColor: `${getThemeColor()}22`, color: getThemeColor(), border: `1px solid ${getThemeColor()}44` }}>
+                    {w.category}
+                  </span>
+                  <h4 className="text-5xl md:text-6xl font-bold text-white leading-none mb-8 tracking-tighter">
+                    {w.title}
+                  </h4>
+                  <p className="text-gray-400 text-xl leading-relaxed mb-12 max-w-2xl font-medium">
+                    {w.desc}
+                  </p>
+                </div>
 
+                {/* Tech Stack Tags */}
                 <div className="mt-auto flex flex-wrap gap-3">
                   {w.tags.map(tag => (
-                    <span key={tag} className="px-4 py-1.5 bg-[#0B0E14] border border-[rgba(123,167,212,0.1)] text-[#7BA7D4] text-[0.65rem] rounded-full uppercase tracking-wider">
+                    <span key={tag} className="px-5 py-2 bg-black/60 border border-white/10 text-white text-[0.7rem] rounded-xl font-bold uppercase tracking-wider">
                       {tag}
                     </span>
                   ))}
                 </div>
               </div>
 
-              {/* Bottom Controls */}
-              <div className="p-10 border-t border-[rgba(123,167,212,0.1)] bg-[#0B0E14]/30 flex justify-between items-center">
-                <div className="flex gap-3">
+              {/* Navigation Controls */}
+              <div className="p-8 px-12 border-t border-white/5 bg-black/40 flex justify-between items-center">
+                <div className="flex gap-4">
                   {WORKS.map((_, i) => (
                     <button 
                       key={i} 
                       onClick={() => setActive(i)}
-                      className={`h-1.5 rounded-full transition-all duration-500 ${i === active ? 'w-8 bg-[#7BA7D4]' : 'w-2 bg-[rgba(123,167,212,0.2)]'}`}
+                      className="h-2 rounded-full transition-all duration-500"
+                      style={{ 
+                        width: i === active ? '40px' : '10px', 
+                        backgroundColor: i === active ? getThemeColor() : 'rgba(255,255,255,0.1)',
+                        boxShadow: i === active ? `0 0 15px ${getThemeColor()}` : 'none'
+                      }}
                     />
                   ))}
                 </div>
+                
                 <div className="flex gap-4">
-                  <button onClick={prev} className="w-12 h-12 rounded-full border border-[rgba(123,167,212,0.2)] flex items-center justify-center text-[#7BA7D4] hover:bg-[#7BA7D4] hover:text-[#0B0E14] transition-all">←</button>
-                  <button onClick={next} className="w-12 h-12 rounded-full border border-[rgba(123,167,212,0.2)] flex items-center justify-center text-[#7BA7D4] hover:bg-[#7BA7D4] hover:text-[#0B0E14] transition-all">→</button>
+                  <button onClick={prev} className="group w-14 h-14 rounded-2xl border border-white/10 flex items-center justify-center text-white hover:border-[#00f2ff] transition-all duration-300">
+                    <span className="group-hover:-translate-x-1 transition-transform">←</span>
+                  </button>
+                  <button onClick={next} className="group w-14 h-14 rounded-2xl flex items-center justify-center text-black font-bold transition-all duration-300"
+                    style={{ backgroundColor: getThemeColor() }}>
+                    <span className="group-hover:translate-x-1 transition-transform">→</span>
+                  </button>
                 </div>
               </div>
             </div>
