@@ -75,56 +75,53 @@ export default function WorkCarousel() {
                   Engineering conversion engines. I build automated funnels that bridge the gap between complex software and <span className="text-[#ff00c8]">high-intent</span> global clients.
                 </p>
 
-                {/* LEAD GEN PREVIEW IMAGES */}
-                <div className="relative group/preview rounded-[2rem] overflow-hidden border border-white/10 bg-black/60 group-hover:border-[#00f2ff]/50 transition-colors shadow-2xl flex items-center justify-center aspect-video">
-                  {LEAD_GEN_IMAGES.map((img, idx) => (
-                    <div
-                      key={img}
-                      className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                        idx === leadGenIndex ? 'opacity-100' : 'opacity-0'
-                      }`}
-                    >
-                      <img src={img} alt={`Lead Gen ${idx}`} className="w-full h-full object-contain p-4" />
+                {/* LEAD GEN IMAGE CARD */}
+                <div className="mt-8 p-6 bg-[#0a0a0f] border-2 border-[#00f2ff] rounded-[2.5rem] shadow-[0_0_30px_rgba(0,242,255,0.15),0_20px_60px_rgba(0,0,0,0.6)] flex flex-col gap-6 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-[#00f2ff]/5 to-transparent pointer-events-none" />
+                  <div className="relative group/preview rounded-[1.5rem] overflow-hidden border border-white/5 bg-black/40 flex items-center justify-center aspect-video shadow-inner">
+                    {LEAD_GEN_IMAGES.map((img, idx) => (
+                      <div
+                        key={img}
+                        className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                          idx === leadGenIndex ? 'opacity-100' : 'opacity-0'
+                        }`}
+                      >
+                        <img src={img} alt={`Lead Gen ${idx}`} className="w-full h-full object-contain p-4" />
+                      </div>
+                    ))}
+                    
+                    {/* Manual Navigation */}
+                    <div className="absolute inset-0 flex items-center justify-between px-4 opacity-0 group-hover/preview:opacity-100 transition-opacity">
+                      <button onClick={() => setLeadGenIndex(prev => (prev - 1 + LEAD_GEN_IMAGES.length) % LEAD_GEN_IMAGES.length)} className="w-10 h-10 rounded-full bg-black/60 border border-white/20 text-white flex items-center justify-center hover:bg-[#00f2ff] transition-all">←</button>
+                      <button onClick={() => setLeadGenIndex(prev => (prev + 1) % LEAD_GEN_IMAGES.length)} className="w-10 h-10 rounded-full bg-black/60 border border-white/20 text-white flex items-center justify-center hover:bg-[#00f2ff] transition-all">→</button>
                     </div>
-                  ))}
-                  
-                  {/* Manual Navigation */}
-                  <div className="absolute inset-0 flex items-center justify-between px-4 opacity-0 group-hover/preview:opacity-100 transition-opacity">
-                    <button onClick={() => setLeadGenIndex(prev => (prev - 1 + LEAD_GEN_IMAGES.length) % LEAD_GEN_IMAGES.length)} className="w-10 h-10 rounded-full bg-black/60 border border-white/20 text-white flex items-center justify-center hover:bg-[#00f2ff] transition-all">←</button>
-                    <button onClick={() => setLeadGenIndex(prev => (prev + 1) % LEAD_GEN_IMAGES.length)} className="w-10 h-10 rounded-full bg-black/60 border border-white/20 text-white flex items-center justify-center hover:bg-[#00f2ff] transition-all">→</button>
                   </div>
-                  
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 px-3 py-1.5 bg-black/60 backdrop-blur-md rounded-full border border-white/10">
-                    {LEAD_GEN_IMAGES.map((_, idx) => (
-                      <button key={idx} onClick={() => setLeadGenIndex(idx)} className={`h-1.5 rounded-full transition-all duration-500 ${idx === leadGenIndex ? 'w-5 bg-[#00f2ff]' : 'w-1.5 bg-white/20'}`} />
+
+                  {/* Thumbnails inside the white card */}
+                  <div className="flex flex-wrap gap-2 justify-center">
+                    {LEAD_GEN_IMAGES.map((img, idx) => (
+                      <button key={idx} onClick={() => setLeadGenIndex(idx)} className={`relative w-16 aspect-video rounded-lg overflow-hidden border-2 transition-all duration-300 ${idx === leadGenIndex ? 'border-[#00f2ff] scale-105' : 'border-black/5 opacity-40 hover:opacity-100'}`}>
+                        <img src={img} className="w-full h-full object-cover" />
+                      </button>
                     ))}
                   </div>
                 </div>
 
-                {/* Thumbnails */}
-                <div className="mt-8 flex flex-wrap gap-3">
-                  {LEAD_GEN_IMAGES.map((img, idx) => (
-                    <button key={idx} onClick={() => setLeadGenIndex(idx)} className={`relative w-20 aspect-video rounded-xl overflow-hidden border-2 transition-all duration-300 ${idx === leadGenIndex ? 'border-[#00f2ff] shadow-[0_0_15px_rgba(0,242,255,0.2)] scale-105' : 'border-white/5 opacity-40 hover:opacity-100'}`}>
-                      <img src={img} className="w-full h-full object-cover" />
-                    </button>
-                  ))}
-                </div>
+                {/* NESTED ASSET CARD - Remains a distinct dark card */}
+                <div className="mt-10 p-8 bg-[#0a0a0f] border-2 border-[#00f2ff] rounded-[2.5rem] shadow-[0_0_30px_rgba(0,242,255,0.15),0_20px_60px_rgba(0,0,0,0.6)] relative group/assetcard overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-[#ff00c8]/5 to-transparent pointer-events-none" />
 
-                {/* NESTED ASSET CARD */}
-                <div className="mt-12 p-8 bg-black/60 border border-white/10 rounded-[2.5rem] shadow-2xl relative group/assetcard">
-                  <div className="absolute inset-0 bg-[#ff00c8]/5 opacity-0 group-hover/assetcard:opacity-100 transition-opacity rounded-[2.5rem] pointer-events-none" />
-                  
                   <div className="flex items-center justify-between mb-8 relative z-10">
                     <div className="flex items-center gap-3">
                        <div className="w-1.5 h-1.5 rounded-full bg-[#ff00c8] shadow-[0_0_8px_#ff00c8]" />
                        <span className="text-white text-[0.65rem] uppercase tracking-[0.4em] font-black">Campaign Assets</span>
                     </div>
                     <div className="px-3 py-1 bg-white/5 rounded-full border border-white/5">
-                      <span className="text-gray-500 font-mono text-[0.5rem] uppercase tracking-widest">Production_Ready</span>
+                      <span className="text-gray-400 font-mono text-[0.5rem] uppercase tracking-widest">Production_Ready</span>
                     </div>
                   </div>
 
-                  <div className="relative group/leadpreview rounded-2xl overflow-hidden border border-white/10 bg-black/60 shadow-2xl aspect-video z-10">
+                  <div className="relative group/leadpreview rounded-2xl overflow-hidden border border-white/5 bg-black/40 shadow-inner aspect-video z-10">
                     {LEAD_IMAGES.map((img, idx) => (
                       <div key={idx} className={`absolute inset-0 transition-opacity duration-1000 ${idx === leadIndex ? 'opacity-100' : 'opacity-0'}`}>
                         <img src={img} className="w-full h-full object-contain p-4" />
@@ -182,7 +179,7 @@ export default function WorkCarousel() {
                   <div className="w-3 h-3 rounded-full bg-[#00f2ff]/30" />
                 </div>
                 <div className="px-6 py-1 bg-black/40 rounded-full border border-[#00f2ff]/30 shadow-[0_0_10px_rgba(0,242,255,0.1)]">
-                   <span className="font-mono text-[0.65rem] tracking-[0.3em] uppercase drop-shadow-[0_0_5px_#00f2ff]" style={{ color: '#00f2ff' }}>DYNAMIC FRAMEWORKS</span>
+                   <span className="text-[#00f2ff] text-[0.75rem] uppercase tracking-[0.4em] font-black drop-shadow-[0_0_5px_#00f2ff]">DYNAMIC FRAMEWORKS</span>
                 </div>
               </div>
 
@@ -217,17 +214,29 @@ export default function WorkCarousel() {
                     ))}
                 </div>
 
-                {/* WEB DEV PREVIEW IMAGES */}
-                <div className="relative group/webdev rounded-[2rem] overflow-hidden border border-[#00f2ff]/30 bg-black/60 shadow-2xl aspect-[16/11] mb-10">
-                  {WEB_DEV_IMAGES.map((img, idx) => (
-                    <div key={idx} className={`absolute inset-0 transition-opacity duration-1000 ${idx === webDevIndex ? 'opacity-100' : 'opacity-0'}`}>
-                      <img src={img} alt={`Web Dev ${idx}`} className="w-full h-full object-contain p-4" />
+                {/* WEB DEV IMAGE CARD */}
+                <div className="mt-8 p-6 bg-[#0a0a0f] border-2 border-[#00f2ff] rounded-[2.5rem] shadow-[0_0_30px_rgba(0,242,255,0.15),0_20px_60px_rgba(0,0,0,0.6)] flex flex-col gap-6 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-[#00f2ff]/5 to-transparent pointer-events-none" />
+                  <div className="relative group/webdev rounded-[1.5rem] overflow-hidden border border-white/5 bg-black/40 flex items-center justify-center aspect-[16/11] shadow-inner">
+                    {WEB_DEV_IMAGES.map((img, idx) => (
+                      <div key={idx} className={`absolute inset-0 transition-opacity duration-1000 ${idx === webDevIndex ? 'opacity-100' : 'opacity-0'}`}>
+                        <img src={img} alt={`Web Dev ${idx}`} className="w-full h-full object-contain p-4" />
+                      </div>
+                    ))}
+                    
+                    <div className="absolute inset-0 flex items-center justify-between px-4 opacity-0 group-hover/webdev:opacity-100 transition-opacity">
+                      <button onClick={() => setWebDevIndex(prev => (prev - 1 + WEB_DEV_IMAGES.length) % WEB_DEV_IMAGES.length)} className="w-10 h-10 rounded-full bg-black/60 border border-white/20 text-white flex items-center justify-center hover:bg-[#00f2ff] transition-all">←</button>
+                      <button onClick={() => setWebDevIndex(prev => (prev + 1) % WEB_DEV_IMAGES.length)} className="w-10 h-10 rounded-full bg-black/60 border border-white/20 text-white flex items-center justify-center hover:bg-[#00f2ff] transition-all">→</button>
                     </div>
-                  ))}
-                  
-                  <div className="absolute inset-0 flex items-center justify-between px-4 opacity-0 group-hover/webdev:opacity-100 transition-opacity">
-                    <button onClick={() => setWebDevIndex(prev => (prev - 1 + WEB_DEV_IMAGES.length) % WEB_DEV_IMAGES.length)} className="w-10 h-10 rounded-full bg-black/60 border border-white/20 text-white flex items-center justify-center hover:bg-[#00f2ff] transition-all">←</button>
-                    <button onClick={() => setWebDevIndex(prev => (prev + 1) % WEB_DEV_IMAGES.length)} className="w-10 h-10 rounded-full bg-black/60 border border-white/20 text-white flex items-center justify-center hover:bg-[#00f2ff] transition-all">→</button>
+                  </div>
+
+                  {/* Thumbnails/Indicators for Web Dev */}
+                  <div className="flex flex-wrap gap-2 justify-center">
+                    {WEB_DEV_IMAGES.map((img, idx) => (
+                      <button key={idx} onClick={() => setWebDevIndex(idx)} className={`relative w-16 aspect-video rounded-lg overflow-hidden border-2 transition-all duration-300 ${idx === webDevIndex ? 'border-[#00f2ff] scale-105' : 'border-black/5 opacity-40 hover:opacity-100'}`}>
+                        <img src={img} className="w-full h-full object-cover" />
+                      </button>
+                    ))}
                   </div>
                 </div>
               </div>

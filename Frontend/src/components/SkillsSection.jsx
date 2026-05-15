@@ -18,16 +18,17 @@ function SkillBar({ name, level, color, isVisible }) {
           fontSize: '0.75rem',
           letterSpacing: '0.1em',
           textTransform: 'uppercase',
-          color: hover ? color : 'rgba(255,255,255,0.5)',
-          fontWeight: 700,
+          color: hover ? color : '#333',
+          fontWeight: 800,
           transition: 'all 0.3s ease',
         }}>
           {name}
         </span>
         <span style={{
           fontFamily: "monospace",
-          fontSize: '0.8rem',
-          color: '#FFF',
+          fontSize: '0.85rem',
+          color: '#000',
+          fontWeight: 700,
           opacity: isVisible ? 1 : 0,
           transition: 'opacity 1s ease 0.5s'
         }}>
@@ -35,8 +36,8 @@ function SkillBar({ name, level, color, isVisible }) {
         </span>
       </div>
       <div style={{
-        height: '6px',
-        background: 'rgba(255,255,255,0.05)',
+        height: '8px',
+        background: 'rgba(0,0,0,0.08)',
         borderRadius: '10px',
         overflow: 'hidden',
       }}>
@@ -129,38 +130,48 @@ export default function SkillsSection() {
             <div
               key={cat.id}
               style={{
-                background: 'rgba(20, 20, 25, 0.6)',
-                border: '1px solid rgba(255, 255, 255, 0.05)',
+                background: 'linear-gradient(145deg, #ffffff, #f9f9f9)',
+                border: '1px solid rgba(255, 255, 255, 0.8)',
+                borderBottom: `6px solid ${cat.color}`,
                 borderRadius: '32px',
                 padding: '3rem',
                 backdropFilter: 'blur(20px)',
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? 'translateY(0)' : 'translateY(40px)',
                 transition: `all 0.8s cubic-bezier(0.2, 0, 0, 1) ${idx * 0.2}s`,
-                boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
+                boxShadow: `0 20px 40px rgba(0, 0, 0, 0.1), 
+                            0 10px 20px ${cat.color}15,
+                            inset 0 0 15px rgba(255, 255, 255, 0.5)`,
               }}
             >
               <div style={{ 
-                width: '60px', height: '60px', 
-                background: `${cat.color}15`, 
-                borderRadius: '16px',
+                width: '80px', height: '80px', 
+                background: '#0a0a0f', 
+                borderRadius: '24px',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontSize: '1.8rem', marginBottom: '2rem',
-                border: `1px solid ${cat.color}33`
+                fontSize: '2.6rem', marginBottom: '2.2rem',
+                border: `4px solid ${cat.color}`,
+                boxShadow: `0 12px 30px ${cat.color}44`,
+                position: 'relative',
+                transform: 'translateY(-10px)'
               }}>
                 {cat.icon}
               </div>
 
               <h3 style={{
-                fontFamily: 'serif', fontSize: '1.6rem',
-                color: '#FFF', marginBottom: '1rem'
+                fontFamily: 'serif', fontSize: '1.8rem',
+                color: '#000000', marginBottom: '1rem',
+                fontWeight: 900,
+                display: 'flex', alignItems: 'center', gap: '10px'
               }}>
+                <span style={{ width: '12px', height: '12px', borderRadius: '50%', background: cat.color }} />
                 {cat.label}
               </h3>
 
               <p style={{
-                fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)',
-                lineHeight: '1.7', marginBottom: '2.5rem', minHeight: '3.5rem'
+                fontSize: '1rem', color: '#1a1a1a',
+                fontWeight: 600,
+                lineHeight: '1.6', marginBottom: '2.5rem', minHeight: '3.5rem'
               }}>
                 {cat.desc}
               </p>

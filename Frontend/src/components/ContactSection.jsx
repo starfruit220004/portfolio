@@ -10,7 +10,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-16 md:py-24 px-6 bg-[#050505] relative overflow-hidden">
+    <section id="contact" className="pt-16 md:pt-24 pb-16 px-6 bg-[#050505] relative overflow-hidden">
       
       {/* --- DYNAMIC BACKGROUND GLOWS --- */}
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#00f2ff] opacity-[0.08] blur-[120px] pointer-events-none" />
