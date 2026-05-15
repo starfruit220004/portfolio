@@ -99,7 +99,7 @@ export default function SkillsSection() {
       id="skills" 
       ref={sectionRef}
       style={{
-        padding: '10rem 2.5rem',
+        padding: '4rem 2.5rem 8rem 2.5rem',
         background: '#050505',
         position: 'relative',
         overflow: 'hidden',

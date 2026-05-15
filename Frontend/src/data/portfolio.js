@@ -1,9 +1,9 @@
 export const WORKS = [
   {
-    category: 'Full-Stack Web',
-    emoji: '🍱',
-    title: 'VenDish Sales System',
-    desc: 'A high-performance sales optimization system for food businesses, featuring real-time serving tracking and inventory management.',
+    category: 'Digital Prototype',
+    emoji: '🧪',
+    title: 'Pulse Logic Concept',
+    desc: 'Pure kinetic architecture. A high-fidelity exploration of zero-latency interaction and electric minimalist design, pushing the boundaries of modern commerce UI.',
     tags: ['React', 'Node.js', 'Supabase', 'Tailwind'],
     color: '#00f2ff', // Electric Cyan
     accent: 'rgba(0, 242, 255, 0.2)',

@@ -10,7 +10,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-32 px-6 bg-[#050505] relative overflow-hidden">
+    <section id="contact" className="py-16 md:py-24 px-6 bg-[#050505] relative overflow-hidden">
       
       {/* --- DYNAMIC BACKGROUND GLOWS --- */}
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#00f2ff] opacity-[0.08] blur-[120px] pointer-events-none" />
@@ -34,14 +34,14 @@ export default function ContactSection() {
             </h2>
             
             <p className="text-gray-400 text-xl mb-12 leading-relaxed max-w-md font-medium">
-              Whether you need a high-performance web system, an IoT solution, or a funnel that actually converts—let’s make it happen.
+              Whether you need a high-performance web system, that actually converts to make it happen.
             </p>
             
             <div className="space-y-10">
               <div className="group cursor-pointer">
                 <p className="text-[0.65rem] uppercase tracking-[0.3em] text-gray-500 mb-2 font-bold">Direct Line</p>
                 <p className="text-white text-3xl font-bold group-hover:text-[#00f2ff] transition-all duration-300 underline decoration-[#00f2ff]/30 underline-offset-8">
-                  hello@yourname.com
+                  hannahjeanbalimbingan@gmail.com
                 </p>
               </div>
             </div>
@@ -59,11 +59,11 @@ export default function ContactSection() {
               <form onSubmit={handleSubmit} className="space-y-8">
                 {/* Name Input */}
                 <div className="relative">
-                  <label className="block text-[0.6rem] font-black text-gray-400 tracking-[0.2em] mb-1">NAME</label>
+                  <label className="block text-[0.6rem] font-black text-gray-500 tracking-[0.2em] mb-1">NAME</label>
                   <input 
                     type="text"
                     required
-                    className="w-full bg-transparent border-b-2 border-gray-200 py-2 text-[#0a0a0a] font-bold text-lg outline-none focus:border-[#00f2ff] transition-colors placeholder:text-gray-300" 
+                    className="w-full bg-transparent border-b-2 border-gray-200 py-2 text-[#0a0a0a] font-bold text-lg outline-none focus:border-[#00f2ff] transition-colors placeholder:text-gray-400" 
                     placeholder="John Doe"
                     onChange={(e) => setFormData({...formData, name: e.target.value})}
                   />
@@ -71,11 +71,11 @@ export default function ContactSection() {
                 
                 {/* Email Input */}
                 <div className="relative">
-                  <label className="block text-[0.6rem] font-black text-gray-400 tracking-[0.2em] mb-1">EMAIL</label>
+                  <label className="block text-[0.6rem] font-black text-gray-500 tracking-[0.2em] mb-1">EMAIL</label>
                   <input 
                     type="email"
                     required
-                    className="w-full bg-transparent border-b-2 border-gray-200 py-2 text-[#0a0a0a] font-bold text-lg outline-none focus:border-[#bc13fe] transition-colors placeholder:text-gray-300" 
+                    className="w-full bg-transparent border-b-2 border-gray-200 py-2 text-[#0a0a0a] font-bold text-lg outline-none focus:border-[#bc13fe] transition-colors placeholder:text-gray-400" 
                     placeholder="john@example.com"
                     onChange={(e) => setFormData({...formData, email: e.target.value})}
                   />
@@ -83,11 +83,11 @@ export default function ContactSection() {
 
                 {/* Message Input */}
                 <div className="relative">
-                  <label className="block text-[0.6rem] font-black text-gray-400 tracking-[0.2em] mb-1">MESSAGE</label>
+                  <label className="block text-[0.6rem] font-black text-gray-500 tracking-[0.2em] mb-1">MESSAGE</label>
                   <textarea 
                     required
                     rows="3"
-                    className="w-full bg-transparent border-b-2 border-gray-200 py-2 text-[#0a0a0a] font-bold text-lg outline-none focus:border-[#ff00c8] transition-colors placeholder:text-gray-300 resize-none" 
+                    className="w-full bg-transparent border-b-2 border-gray-200 py-2 text-[#0a0a0a] font-bold text-lg outline-none focus:border-[#ff00c8] transition-colors placeholder:text-gray-400 resize-none" 
                     placeholder="Tell me about the project..."
                     onChange={(e) => setFormData({...formData, message: e.target.value})}
                   />

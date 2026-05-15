@@ -39,7 +39,7 @@ export default function Hero() {
   const typed = useTypingAnimation(PHRASES);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-6 md:px-20 py-28 overflow-hidden bg-[#020202]">
+    <section className="relative flex items-center justify-center px-6 md:px-20 py-20 md:py-32 overflow-hidden bg-[#020202]">
       
       {/* --- MINIMIZED BUT VIBRANT GLOWS --- */}
       {/* Cyan: Reduced size/opacity, but kept the vibrant hue */}

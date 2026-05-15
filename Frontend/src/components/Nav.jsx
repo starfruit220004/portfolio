@@ -63,7 +63,7 @@ export default function Nav() {
           letterSpacing: '0.12em',
           textShadow: '0 2px 10px rgba(0,0,0,0.2)'
         }}>
-          Powered by Caffeine & Ambition
+          Powered by Coffee & Ambition
         </span>
       </div>
 
