@@ -10,17 +10,17 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="pt-16 md:pt-24 pb-16 px-6 bg-[#050505] relative overflow-hidden">
+    <section id="contact" className="pt-16 md:pt-24 pb-16 px-6 bg-[#050505] relative overflow-hidden reveal-on-scroll opacity-0">
       
       {/* --- DYNAMIC BACKGROUND GLOWS --- */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#00f2ff] opacity-[0.08] blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[#bc13fe] opacity-[0.08] blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#00f2ff] opacity-[0.08] blur-[120px] pointer-events-none animate-float" />
+      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[#bc13fe] opacity-[0.08] blur-[120px] pointer-events-none animate-float" style={{ animationDelay: '-2s' }} />
 
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           
           {/* Left Side: Catchy Copy */}
-          <div>
+          <div className="reveal-on-scroll opacity-0 delay-100">
             <div className="flex items-center gap-4 mb-8">
               <span className="w-12 h-[2px] bg-gradient-to-r from-[#00f2ff] to-[#bc13fe]" />
               <span className="text-[#00f2ff] text-xs font-black uppercase tracking-[0.4em]">Available for Hire</span>
@@ -40,7 +40,7 @@ export default function ContactSection() {
             <div className="space-y-10">
               <div className="group cursor-pointer">
                 <p className="text-[0.65rem] uppercase tracking-[0.3em] text-gray-500 mb-2 font-bold">Direct Line</p>
-                <p className="text-white text-3xl font-bold group-hover:text-[#00f2ff] transition-all duration-300 underline decoration-[#00f2ff]/30 underline-offset-8">
+                <p className="text-white text-2xl md:text-3xl font-bold group-hover:text-[#00f2ff] transition-all duration-300 underline decoration-[#00f2ff]/30 underline-offset-8 break-all">
                   hannahjeanbalimbingan@gmail.com
                 </p>
               </div>
@@ -48,7 +48,7 @@ export default function ContactSection() {
           </div>
 
           {/* Right Side: High-Gloss White Card */}
-          <div className="relative">
+          <div className="relative reveal-on-scroll opacity-0 delay-300">
             {/* The "Aura" behind the card */}
             <div className="absolute -inset-4 bg-gradient-to-tr from-[#00f2ff] via-[#bc13fe] to-[#ff00c8] rounded-[3rem] opacity-20 blur-2xl" />
             

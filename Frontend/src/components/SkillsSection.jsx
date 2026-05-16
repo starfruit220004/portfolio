@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 // Assuming these are your updated data imports
 import { SKILLS_WEBDEV, SKILLS_LEADGEN, SKILLS_BACKEND } from '../data/portfolio';
 import SectionHeader from './SectionHeader';
+import { Sparkles, Cpu, Target } from 'lucide-react';
 
 function SkillBar({ name, level, color, isVisible }) {
   const [hover, setHover] = useState(false);
@@ -57,7 +58,7 @@ const CATEGORIES = [
   {
     id: 'webdev',
     label: 'Frontend Development',
-    icon: '✨',
+    icon: <Sparkles size={32} />,
     desc: 'Crafting immersive, high-performance user interfaces with React and modern CSS.',
     skillsKey: 'SKILLS_WEBDEV',
     color: '#00f2ff', // Electric Cyan
@@ -65,7 +66,7 @@ const CATEGORIES = [
   {
     id: 'backend',
     label: 'Backend & Systems',
-    icon: '⚙️',
+    icon: <Cpu size={32} />,
     desc: 'Scalable server-side logic and database architectures using Node.js and Django.',
     skillsKey: 'SKILLS_BACKEND', // New category to replace IoT
     color: '#bc13fe', // Neon Purple
@@ -73,7 +74,7 @@ const CATEGORIES = [
   {
     id: 'leadgen',
     label: 'Lead Gen & Strategy',
-    icon: '🎯',
+    icon: <Target size={32} />,
     desc: 'Optimizing conversion funnels and digital marketing automation for growth.',
     skillsKey: 'SKILLS_LEADGEN',
     color: '#ff00c8', // Magenta
@@ -89,7 +90,7 @@ export default function SkillsSection() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
-      { threshold: 0.2 }
+      { threshold: 0.1 }
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
@@ -99,80 +100,34 @@ export default function SkillsSection() {
     <section 
       id="skills" 
       ref={sectionRef}
-      style={{
-        padding: '4rem 2.5rem 8rem 2.5rem',
-        background: '#050505',
-        position: 'relative',
-        overflow: 'hidden',
-      }}
+      className="reveal-on-scroll opacity-0 py-20 md:py-32 px-6 md:px-10 bg-[#050505] relative overflow-hidden"
     >
       {/* Background Neon Auroras */}
-      <div style={{
-        position: 'absolute',
-        top: '20%',
-        left: '-10%',
-        width: '50%',
-        height: '50%',
-        background: 'radial-gradient(circle, rgba(0,242,255,0.08) 0%, transparent 70%)',
-        filter: 'blur(100px)',
-      }} />
+      <div className="animate-float absolute top-[20%] left-[-10%] w-1/2 h-1/2 bg-[radial-gradient(circle,rgba(0,242,255,0.08)_0%,transparent_70%)] blur-[100px] pointer-events-none" />
 
-      <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+      <div className="max-w-7xl mx-auto relative z-10">
         <SectionHeader label="Expertise" title="Technical Mastery" />
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: '2.5rem',
-          marginTop: '5rem',
-        }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 mt-16 md:mt-20">
           {CATEGORIES.map((cat, idx) => (
             <div
               key={cat.id}
-              style={{
-                background: 'linear-gradient(145deg, #ffffff, #f9f9f9)',
-                border: '1px solid rgba(255, 255, 255, 0.8)',
-                borderBottom: `6px solid ${cat.color}`,
-                borderRadius: '32px',
-                padding: '3rem',
-                backdropFilter: 'blur(20px)',
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'translateY(0)' : 'translateY(40px)',
-                transition: `all 0.8s cubic-bezier(0.2, 0, 0, 1) ${idx * 0.2}s`,
-                boxShadow: `0 20px 40px rgba(0, 0, 0, 0.1), 
-                            0 10px 20px ${cat.color}15,
-                            inset 0 0 15px rgba(255, 255, 255, 0.5)`,
-              }}
+              className={`reveal-on-scroll opacity-0 delay-${(idx + 1) * 100} bg-white border border-white border-b-[6px] rounded-[2rem] p-8 md:p-12 transition-all duration-500 shadow-[0_20px_40px_rgba(0,0,0,0.3),0_10px_20px_rgba(0,242,255,0.05)] hover:-translate-y-2`}
+              style={{ borderBottomColor: cat.color }}
             >
-              <div style={{ 
-                width: '80px', height: '80px', 
-                background: '#0a0a0f', 
-                borderRadius: '24px',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontSize: '2.6rem', marginBottom: '2.2rem',
-                border: `4px solid ${cat.color}`,
-                boxShadow: `0 12px 30px ${cat.color}44`,
-                position: 'relative',
-                transform: 'translateY(-10px)'
-              }}>
+              <div 
+                className="w-16 h-16 bg-[#0a0a0f] rounded-2xl flex items-center justify-center mb-8 border border-white/10 shadow-lg"
+                style={{ color: cat.color }}
+              >
                 {cat.icon}
               </div>
 
-              <h3 style={{
-                fontFamily: 'serif', fontSize: '1.8rem',
-                color: '#000000', marginBottom: '1rem',
-                fontWeight: 900,
-                display: 'flex', alignItems: 'center', gap: '10px'
-              }}>
-                <span style={{ width: '12px', height: '12px', borderRadius: '50%', background: cat.color }} />
+              <h3 className="font-serif text-2xl text-black mb-4 font-black flex items-center gap-3">
+                <span className="w-2.5 h-2.5 rounded-full" style={{ background: cat.color }} />
                 {cat.label}
               </h3>
 
-              <p style={{
-                fontSize: '1rem', color: '#1a1a1a',
-                fontWeight: 600,
-                lineHeight: '1.6', marginBottom: '2.5rem', minHeight: '3.5rem'
-              }}>
+              <p className="text-sm md:text-base text-black/80 font-bold leading-relaxed mb-8 min-h-[4rem]">
                 {cat.desc}
               </p>
 

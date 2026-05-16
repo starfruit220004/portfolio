@@ -1,109 +1,119 @@
 import { useState, useEffect } from 'react';
+import { Coffee, Menu, X } from 'lucide-react';
 
-const NAV_LINKS = ['Work', 'Skills', 'Contact'];
+const NAV_LINKS = ['About', 'Work', 'Skills', 'Contact'];
 const SANS = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif";
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
 
       let current = '';
-      NAV_LINKS.forEach(link => {
-        const el = document.getElementById(link.toLowerCase());
-        if (el && window.scrollY >= el.offsetTop - 150) {
-          current = link.toLowerCase();
-        }
-      });
-      setActiveSection(current);
+      if (window.scrollY < 100) {
+        current = NAV_LINKS[0].toLowerCase();
+      } else {
+        NAV_LINKS.forEach(link => {
+          const el = document.getElementById(link.toLowerCase());
+          if (el) {
+            const rect = el.getBoundingClientRect();
+            if (rect.top <= 200 && rect.bottom >= 200) {
+              current = link.toLowerCase();
+            }
+          }
+        });
+      }
+      if (current) setActiveSection(current);
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <nav style={{
-      position: 'fixed',
-      top: 0, left: 0, right: 0,
-      zIndex: 100,
-      height: '70px',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      padding: '0 2.5rem',
-      transition: 'all 0.4s ease',
-      background: scrolled
-        ? 'linear-gradient(90deg, #6414a0 0%, #b92373 100%)' 
-        : 'linear-gradient(90deg, #7828b4 0%, #c83282 100%)',
-      backdropFilter: 'blur(10px)',
-      boxShadow: scrolled ? '0 10px 30px rgba(0,0,0,0.3)' : 'none',
-      borderBottom: '1px solid rgba(255, 255, 255, 0.2)',
-    }}>
-      
-      {/* LEFT SIDE: Humorous Phrase ONLY (Removed "Status:") */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-        <div style={{
-          width: '10px',
-          height: '10px',
-          borderRadius: '50%',
-          backgroundColor: '#ffffff', 
-          boxShadow: '0 0 15px #ffffff',
-          animation: 'pulse 2s infinite'
-        }} />
-        <span style={{
-          fontFamily: SANS,
-          fontSize: '0.75rem',
-          fontWeight: 900, 
-          color: '#ffffff',
-          textTransform: 'uppercase',
-          letterSpacing: '0.12em',
-          textShadow: '0 2px 10px rgba(0,0,0,0.2)'
-        }}>
-          Powered by Coffee & Ambition
-        </span>
+    <nav 
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 border-b ${
+        scrolled 
+          ? 'h-16 bg-[#6414a0]/90 backdrop-blur-md border-white/10 shadow-lg' 
+          : 'h-20 bg-transparent border-transparent'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto h-full px-6 flex items-center justify-between">
+        
+        {/* LEFT SIDE: Humorous Phrase */}
+        <div className="flex items-center gap-3">
+          <Coffee size={18} className="text-white animate-pulse" />
+          <span className="text-white text-[0.6rem] md:text-[0.7rem] font-black uppercase tracking-[0.2em] hidden sm:block">
+            Powered by Coffee & Ambition
+          </span>
+          <span className="text-white text-[0.7rem] font-black uppercase tracking-[0.2em] sm:hidden">
+            Dev
+          </span>
+        </div>
+
+        {/* RIGHT SIDE: Desktop Navigation Links */}
+        <div className="hidden md:flex items-center gap-1">
+          {NAV_LINKS.map(link => {
+            const isActive = activeSection === link.toLowerCase();
+            const highlightColor = '#00f2ff'; 
+
+            return (
+              <a
+                key={link}
+                href={`#${link.toLowerCase()}`}
+                className="nav-link px-4 py-2 rounded-lg text-[0.75rem] font-black uppercase tracking-widest transition-all duration-300 relative group"
+                style={{
+                  color: isActive ? highlightColor : '#ffffff',
+                  background: isActive ? 'rgba(0, 242, 255, 0.1)' : 'transparent',
+                  border: isActive ? `1px solid ${highlightColor}44` : '1px solid transparent',
+                  textShadow: isActive ? `0 0 10px ${highlightColor}44` : 'none',
+                }}
+              >
+                {link}
+              </a>
+            );
+          })}
+        </div>
+
+        {/* MOBILE MENU TOGGLE */}
+        <button 
+          className="md:hidden w-10 h-10 flex items-center justify-center text-white"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
+          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
 
-      {/* RIGHT SIDE: Navigation Links */}
-      <div style={{ display: 'flex', gap: '0.5rem' }}>
-        {NAV_LINKS.map(link => {
-          const isActive = activeSection === link.toLowerCase();
-          const highlightColor = '#00f2ff'; 
-
-          return (
+      {/* MOBILE MENU DROPDOWN */}
+      <div 
+        className={`absolute top-full left-0 right-0 bg-[#0a0a0f] border-b border-white/10 transition-all duration-500 overflow-hidden md:hidden ${
+          mobileMenuOpen ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <div className="flex flex-col p-6 gap-4">
+          {NAV_LINKS.map(link => (
             <a
               key={link}
               href={`#${link.toLowerCase()}`}
-              style={{
-                fontFamily: SANS,
-                fontSize: '0.8rem',
-                fontWeight: 800,
-                color: isActive ? highlightColor : '#ffffff',
-                textDecoration: 'none',
-                textTransform: 'uppercase',
-                letterSpacing: '0.15em',
-                transition: 'all 0.3s ease',
-                padding: '0.5rem 1.2rem',
-                borderRadius: '8px',
-                textShadow: isActive ? `0 0 15px ${highlightColor}` : 'none',
-                background: isActive ? 'rgba(0, 242, 255, 0.15)' : 'transparent',
-                border: isActive ? `1px solid ${highlightColor}` : '1px solid transparent',
-              }}
+              className="text-white text-lg font-black uppercase tracking-widest hover:text-[#00f2ff] transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
             >
               {link}
             </a>
-          );
-        })}
+          ))}
+        </div>
       </div>
 
       <style>{`
-        @keyframes pulse {
-          0% { transform: scale(1); opacity: 1; box-shadow: 0 0 5px #ffffff; }
-          50% { transform: scale(1.3); opacity: 0.7; box-shadow: 0 0 20px #ffffff; }
-          100% { transform: scale(1); opacity: 1; box-shadow: 0 0 5px #ffffff; }
+        .nav-link:hover {
+          color: #00f2ff !important;
+          background: rgba(0, 242, 255, 0.05) !important;
+          transform: translateY(-1px);
         }
       `}</style>
     </nav>

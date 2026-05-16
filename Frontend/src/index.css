@@ -1,27 +1,32 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
 @layer base {
   :root {
     --bg-dark: #0B0E14;
     --accent-blue: #7BA7D4;
     --accent-pink: #E8A8C0;
     --text-primary: #DDEEFF;
+    --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   body {
     @apply bg-[#0B0E14] text-[#DDEEFF] antialiased;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
-  /* Serif styling for headers */
-  .font-serif {
-    font-family: 'Playfair Display', 'Georgia', serif;
-  }
-
-  /* Custom selection color to match theme */
-  ::selection {
-    @apply bg-[#7BA7D4]/30 text-white;
+  /* Force hardware acceleration for smoother interactions */
+  * {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 }
 
@@ -32,23 +37,71 @@
     50% { opacity: 0; }
   }
   .animate-blink {
-    animation: blink 1s infinite steps(1);
+    animation: blink 0.8s infinite steps(1);
   }
 
-  /* Fade in animation for the hero */
+  /* Fade in animation - Ultra Smooth */
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { 
+      opacity: 0; 
+      transform: translate3d(0, 10px, 0); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translate3d(0, 0, 0); 
+    }
   }
   .animate-fade-in {
-    animation: fadeIn 1s ease-out forwards;
+    animation: fadeIn 0.6s var(--ease-premium) forwards;
+    will-change: transform, opacity;
   }
 
+  /* Elegant Reveal Up - Snappy & Smooth */
+  @keyframes revealUp {
+    from { 
+      opacity: 0; 
+      transform: translate3d(0, 20px, 0);
+    }
+    to { 
+      opacity: 1; 
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  .reveal-up {
+    animation: revealUp 0.8s var(--ease-premium) forwards;
+    will-change: transform, opacity;
+  }
+
+  /* Balanced Scale In - Snappier */
+  @keyframes scaleIn {
+    from { 
+      opacity: 0; 
+      transform: scale3d(0.98, 0.98, 1); 
+    }
+    to { 
+      opacity: 1; 
+      transform: scale3d(1, 1, 1); 
+    }
+  }
+  .scale-in {
+    animation: scaleIn 0.5s var(--ease-premium) forwards;
+    will-change: transform, opacity;
+  }
+
+  /* Gentle Floating - Optimized */
+  @keyframes float {
+    0%, 100% { transform: translate3d(0, 0, 0); }
+    50% { transform: translate3d(-5px, 8px, 0); }
+  }
+  .animate-float {
+    animation: float 5s ease-in-out infinite;
+    will-change: transform;
+  }
+}
   /* Hide grid backgrounds if they were globally applied */
   .grid-background {
     background-image: none !important;
   }
-}
 
 /* Custom Scrollbar for the Blue Velvet theme */
 ::-webkit-scrollbar {
