@@ -61,7 +61,7 @@ const CATEGORIES = [
     icon: <Sparkles size={32} />,
     desc: 'Crafting immersive, high-performance user interfaces with React and modern CSS.',
     skillsKey: 'SKILLS_WEBDEV',
-    color: '#00f2ff', // Electric Cyan
+    color: '#FFFFFF', // Primary White
   },
   {
     id: 'backend',
@@ -69,7 +69,7 @@ const CATEGORIES = [
     icon: <Cpu size={32} />,
     desc: 'Scalable server-side logic and database architectures using Node.js and Django.',
     skillsKey: 'SKILLS_BACKEND', // New category to replace IoT
-    color: '#bc13fe', // Neon Purple
+    color: '#e0e1dd', // Secondary White
   },
   {
     id: 'leadgen',
@@ -77,7 +77,7 @@ const CATEGORIES = [
     icon: <Target size={32} />,
     desc: 'Optimizing conversion funnels and digital marketing automation for growth.',
     skillsKey: 'SKILLS_LEADGEN',
-    color: '#ff00c8', // Magenta
+    color: '#22D3EE', // Light Blue
   },
 ];
 
@@ -100,10 +100,10 @@ export default function SkillsSection() {
     <section 
       id="skills" 
       ref={sectionRef}
-      className="reveal-on-scroll opacity-0 py-20 md:py-32 px-6 md:px-10 bg-[#050505] relative overflow-hidden"
+      className="reveal-on-scroll opacity-0 py-20 md:py-32 px-6 md:px-10 bg-[#0F172A] relative overflow-hidden"
     >
       {/* Background Neon Auroras */}
-      <div className="animate-float absolute top-[20%] left-[-10%] w-1/2 h-1/2 bg-[radial-gradient(circle,rgba(0,242,255,0.08)_0%,transparent_70%)] blur-[100px] pointer-events-none" />
+      <div className="animate-float absolute top-[20%] left-[-10%] w-1/2 h-1/2 bg-[radial-gradient(circle,rgba(255,255,255,0.08)_0%,transparent_70%)] blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <SectionHeader label="Expertise" title="Technical Mastery" />
@@ -112,11 +112,11 @@ export default function SkillsSection() {
           {CATEGORIES.map((cat, idx) => (
             <div
               key={cat.id}
-              className={`reveal-on-scroll opacity-0 delay-${(idx + 1) * 100} bg-white border border-white border-b-[6px] rounded-[2rem] p-8 md:p-12 transition-all duration-500 shadow-[0_20px_40px_rgba(0,0,0,0.3),0_10px_20px_rgba(0,242,255,0.05)] hover:-translate-y-2`}
+              className={`reveal-on-scroll opacity-0 delay-${(idx + 1) * 100} bg-white border border-white border-b-[6px] rounded-[2rem] p-8 md:p-12 transition-all duration-500 shadow-[0_20px_40px_rgba(0,0,0,0.3),0_10px_20px_rgba(255,255,255,0.05)] hover:-translate-y-2`}
               style={{ borderBottomColor: cat.color }}
             >
               <div 
-                className="w-16 h-16 bg-[#0a0a0f] rounded-2xl flex items-center justify-center mb-8 border border-white/10 shadow-lg"
+                className="w-16 h-16 bg-[#0F172A] rounded-2xl flex items-center justify-center mb-8 border border-white/10 shadow-lg"
                 style={{ color: cat.color }}
               >
                 {cat.icon}

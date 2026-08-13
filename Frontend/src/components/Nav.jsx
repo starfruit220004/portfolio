@@ -39,7 +39,7 @@ export default function Nav() {
     <nav 
       className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 border-b ${
         scrolled 
-          ? 'h-16 bg-[#6414a0]/90 backdrop-blur-md border-white/10 shadow-lg' 
+          ? 'h-16 bg-[#0F172A]/90 backdrop-blur-md border-white/10 shadow-lg' 
           : 'h-20 bg-transparent border-transparent'
       }`}
     >
@@ -60,7 +60,7 @@ export default function Nav() {
         <div className="hidden md:flex items-center gap-1">
           {NAV_LINKS.map(link => {
             const isActive = activeSection === link.toLowerCase();
-            const highlightColor = '#00f2ff'; 
+            const highlightColor = isActive ? '#22D3EE' : '#FFFFFF'; 
 
             return (
               <a
@@ -68,8 +68,8 @@ export default function Nav() {
                 href={`#${link.toLowerCase()}`}
                 className="nav-link px-4 py-2 rounded-lg text-[0.75rem] font-black uppercase tracking-widest transition-all duration-300 relative group"
                 style={{
-                  color: isActive ? highlightColor : '#ffffff',
-                  background: isActive ? 'rgba(0, 242, 255, 0.1)' : 'transparent',
+                  color: isActive ? highlightColor : '#FFFFFF',
+                  background: isActive ? 'rgba(34, 211, 238, 0.1)' : 'transparent',
                   border: isActive ? `1px solid ${highlightColor}44` : '1px solid transparent',
                   textShadow: isActive ? `0 0 10px ${highlightColor}44` : 'none',
                 }}
@@ -91,7 +91,7 @@ export default function Nav() {
 
       {/* MOBILE MENU DROPDOWN */}
       <div 
-        className={`absolute top-full left-0 right-0 bg-[#0a0a0f] border-b border-white/10 transition-all duration-500 overflow-hidden md:hidden ${
+        className={`absolute top-full left-0 right-0 bg-[#0F172A] border-b border-white/10 transition-all duration-500 overflow-hidden md:hidden ${
           mobileMenuOpen ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
@@ -100,7 +100,7 @@ export default function Nav() {
             <a
               key={link}
               href={`#${link.toLowerCase()}`}
-              className="text-white text-lg font-black uppercase tracking-widest hover:text-[#00f2ff] transition-colors"
+              className="text-white text-lg font-black uppercase tracking-widest hover:text-[#FFFFFF] transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
               {link}
@@ -111,8 +111,8 @@ export default function Nav() {
 
       <style>{`
         .nav-link:hover {
-          color: #00f2ff !important;
-          background: rgba(0, 242, 255, 0.05) !important;
+          color: #FFFFFF !important;
+          background: rgba(255, 255, 255, 0.05) !important;
           transform: translateY(-1px);
         }
       `}</style>

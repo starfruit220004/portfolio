@@ -9,15 +9,15 @@ html {
 
 @layer base {
   :root {
-    --bg-dark: #0B0E14;
-    --accent-blue: #7BA7D4;
-    --accent-pink: #E8A8C0;
+    --bg-dark: #0F172A;
+    --accent-blue: #22D3EE;
+    --accent-pink: #FFFFFF;
     --text-primary: #DDEEFF;
     --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   body {
-    @apply bg-[#0B0E14] text-[#DDEEFF] antialiased;
+    @apply bg-[#0F172A] text-[#DDEEFF] antialiased;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     scroll-behavior: smooth;
     overflow-x: hidden;
@@ -108,7 +108,7 @@ html {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0B0E14;
+  background: #0F172A;
 }
 ::-webkit-scrollbar-thumb {
   background: rgba(123, 167, 212, 0.2);

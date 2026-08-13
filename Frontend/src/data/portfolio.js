@@ -5,7 +5,7 @@ export const WORKS = [
     title: 'Pulse Logic Concept',
     desc: 'Pure kinetic architecture. A high-fidelity exploration of zero-latency interaction and electric minimalist design, pushing the boundaries of modern commerce UI.',
     tags: ['React', 'Node.js', 'Supabase', 'Tailwind'],
-    color: '#00f2ff', // Electric Cyan
+    color: '#ffffff', // Electric Cyan
     accent: 'rgba(0, 242, 255, 0.2)',
     link: '#', // Add your actual link here
     image: './vendish-preview.jpg'
@@ -16,7 +16,7 @@ export const WORKS = [
     title: 'ALRT Monitoring',
     desc: 'An intelligent door security system utilizing SMS notifications and real-time dashboard logs for enhanced premises safety.',
     tags: ['Next.js', 'Express', 'SMS Gateway', 'PostgreSQL'],
-    color: '#bc13fe', // Neon Purple
+    color: '#e0e1dd', // Neon Purple
     accent: 'rgba(188, 19, 254, 0.2)',
     link: '#', // Add your actual link here
     image: './alrt-preview.jpg'
@@ -27,7 +27,7 @@ export const WORKS = [
     title: 'Smart Space WMSU',
     desc: 'An AI-driven classroom and space utilization system designed to optimize academic facility allocation.',
     tags: ['React', 'Django', 'Machine Learning', 'API'],
-    color: '#ff00c8', // Magenta
+    color: '#98c1d9', // Magenta
     accent: 'rgba(255, 0, 200, 0.2)',
     link: '#', // Add your actual link here
     image: './wmsu-preview.jpg'
